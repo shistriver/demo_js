@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排序</title>
+    <script>
+        //冒泡排序
+//        var arr = [2,3,1,4,6,5,7];
+       /* function test(arr){
+            for(var i = 0; i < arr.length; i++){
+                for(var j = 0; j < arr.length - i; j++){
+                    toCon(j,j+1);
+                }
+            }
+            function toCon(prev, next){
+                var tmp = '';
+                if(arr[prev] > arr[next]){
+                    tmp = arr[prev];
+                    arr[prev] = arr[next];
+                    arr[next] = tmp;
+                }
+            }
+            return arr;
+        }*/
+
+        //简单排序
+        function test(arr){
+            if(arr.length == 1){
+                return arr;
+            }
+            iMin = arr[0];
+            var iIndex = 0;
+            for(var i = 0; i < arr.length; i++){
+                if(arr[i] < iMin){
+                    iMin = arr[i];
+                    iIndex = i;
+                }
+            }
+            var prev = arr.splice(iIndex,1);
+            return prev.concat(test(arr))
+        }
+        alert(test([2,3,1,4,6,5,7]));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
