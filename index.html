@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>写一个字符串转成驼峰的方法</title>
     <script>
-        var str = 'border-bottom-color';
+//        方法一：
+        /*var str = 'border-bottom-color';
 
         function test(str){
             var arr = str.split('-');
@@ -12,6 +13,17 @@
                 arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
             }
             return arr.join('');
+        }
+        alert(test(str));*/
+
+//        方法二：
+       var str = 'border-bottom-color';
+
+        function test(str){
+            var reg = /-(\w)/g;
+            return str.replace(reg,function($0,$1){
+                return $1.toUpperCase();
+            })
         }
         alert(test(str));
     </script>
