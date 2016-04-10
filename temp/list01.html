@@ -2,7 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>3562123761-->3,562,123,761</title>
+    <script>
+        //方法一：
+       /* var str = '3562123761';
+        function test(str){
+            var iNum = str.length % 3;
+            var prev = '';
+            var iNow = 0;
+            var arr = [];
+            var temp = '';
+
+            if(iNum != 0){
+                prev = str.substring(0,iNum);
+                arr.push(prev);
+            }
+            str = str.substring(iNum);
+
+            for(var i = 0; i < str.length; i++){
+                iNow++;
+                temp += str[i];
+                if(iNow == 3 && temp){
+                    arr.push(temp);
+                    temp = '';
+                    iNow = 0;
+                }
+            }
+            return arr.join(',');
+        }
+        console.log(test(str));*/
+
+        //方法二：
+        var str = '3562123761';
+        function test(str){
+            var reg = /(?=(?!\b)(\d{3})+$)/g;
+            return str.replace(reg,',');
+        }
+        alert(test(str));
+    </script>
 </head>
 <body>
 
