@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去重</title>
+    <script>
+        //方法一：
+        /*function test(arr){
+            var result = [arr[0]];
+
+            for(var i = 1; i < arr.length; i++){
+                if(isCom(arr[i])){
+                    result.push(arr[i]);
+                }
+            }
+            function isCom(val){
+                for(var i = 0; i < result.length; i++){
+                    if(result[i] == val){
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return result;
+        }
+        alert(test([5,6,5,4,5,5,6,2,2,3,9,8]));*/
+
+        //方法二：
+        function test(arr){
+            var result = [];
+            var obj = {};
+
+            for(var i = 0; i < arr.length; i++){
+                if(!obj[arr[i]]){
+                    result.push(arr[i]);
+                    obj[arr[i]] = 1;
+                }
+            }
+            return result;
+        }
+        alert(test([5,6,5,4,5,5,6,2,2,3,9,8]));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
