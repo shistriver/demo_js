@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义属性（索引值）</title>
+    <script>
+        window.onload = function(){
+            var arr = ['node.js','angular.js','react.js'];
+            var btn = document.getElementsByTagName('input');
+            var aP = document.getElementsByTagName('p');
+            for(var i=0; i<btn.length; i++){
+                btn[i].index = i;
+                btn[i].onclick = function(){
+                    aP[this.index].innerHTML = arr[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="bt1"/>
+<input type="button" value="bt2"/>
+<input type="button" value="bt3"/>
+
+<p>a</p>
+
+<p>b</p>
+
+<p>c</p>
+
+</body>
+</html>

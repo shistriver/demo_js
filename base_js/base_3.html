@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动添加属性（2）</title>
+    <style>
+        input{
+            width:50px;
+            height:50px;
+            font-size: 24px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var aInput = document.getElementsByTagName('input');
+            var arr = ['A','B','C','D','E','F','G'];
+            for(var i=0; i<aInput.length; i++){
+                aInput[i].num = 0;
+                aInput[i].onclick = function(){
+//                    alert(this.num);
+                    this.value = arr[this.num];
+                    this.num++;
+                    if(this.num > arr.length-1){
+                        this.num = 0;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="0"/>
+<input type="button" value="0"/>
+<input type="button" value="0"/>
+
+</body>
+</html>

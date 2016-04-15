@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script>
+        window.onload = function(){
+            var arrText = ['图片1','图片2','图片3','图片4'];
+            var arrImg = ['img/detail_1.jpg','img/detail_2.jpg','img/detail_4.jpg','img/detail_5.jpg'];
+            var list = document.getElementById('list');
+            var oH = list.getElementsByTagName('h2')[0];
+            var oP = list.getElementsByTagName('p')[0];
+            var oImg = list.getElementsByTagName('img')[0];
+            var oL = document.getElementsByTagName('ol')[0];
+            var aLi = oL.getElementsByTagName('li');
+
+            //初始化
+            var num = 0;
+            for(var i=0; i<arrImg.length; i++) {
+                oL.innerHTML += '<li>'+(i+1)+'</li>';
+            }
+
+            function imgTab(){
+                oH.innerHTML = 1 + num + '/' + arrImg.length;
+                oP.innerHTML = arrText[num];
+                oImg.src = arrImg[num];
+                //添加当前颜色
+                //思路1：全部清空，当前添加
+                for(var i=0; i<aLi.length; i++){
+                    aLi[i].className = '';
+                }
+                aLi[num].className = 'active';
+            }
+            imgTab();
+
+            //点击事件
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].index = i;
+                aLi[i].onclick = function(){
+                    num = this.index;
+                    imgTab();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="list">
+    <h2>图片加载中...</h2>
+    <p>文字加载中...</p>
+    <img src="" alt=""/>
+    <ol></ol>
+</div>
+</body>
+</html>
