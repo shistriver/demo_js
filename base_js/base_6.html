@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ列表</title>
+    <link rel="stylesheet" href="css/base_6.css"/>
+    <script>
+        window.onload = function(){
+            var arr = ['url(img/ico1.gif) no-repeat 5px center','url(img/ico2.gif) no-repeat 5px center'];
+            var list = document.getElementById('list');
+            var aH2 = list.getElementsByTagName('h2');
+            var aUl = list.getElementsByTagName('ul');
+            var old = null;
+
+            for(var i=0; i<aH2.length; i++){
+                aH2[i].index = i;
+                aUl[i].onOff = true;
+
+                aH2[i].onclick = function(){
+                    if(aUl[this.index].onOff){
+                        aUl[this.index].style.display = 'block';
+                        this.style.background = arr[1];
+                        aUl[this.index].onOff = false;
+                    }else{
+                        aUl[this.index].style.display = 'none';
+                        this.style.background = arr[0];
+                        aUl[this.index].onOff = true;
+                    }
+                }
+            }
+            //
+            for(var i=0; i<aUl.length; i++){
+                var aLi = aUl[i].getElementsByTagName('li');
+                for(var j=0; j<aLi.length; j++){
+                    old = aLi[0];
+                    aLi[j].index = j;
+                    aLi[j].on = true;
+
+                    aLi[j].onclick = function(){
+                        old.style.background = '';
+                        old = this;
+                        this.style.background = 'blue';
+
+                        /*if(this.on){
+                            console.log(4)
+                            this.style.background = 'blue';
+                            this.on = false;
+                        }else{
+                            console.log(4646)
+                            this.style.background = '';
+                            this.on = true;
+                        }*/
+
+                    }
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<!--class="item-list"-->
+<ul id="list">
+    <li>
+        <h2>我的同学</h2>
+        <ul>
+            <li>同学1</li>
+            <li>同学2</li>
+            <li>同学3</li>
+            <li>同学4</li>
+        </ul>
+    </li>
+    <li>
+        <h2>我的好友</h2>
+        <ul>
+            <li>好友1</li>
+            <li>好友2</li>
+            <li>好友3</li>
+        </ul>
+    </li>
+    <li>
+        <h2>黑名单</h2>
+        <ul>
+            <li>黑名单1</li>
+            <li>黑名单2</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

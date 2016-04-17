@@ -1,0 +1,34 @@
+*{
+  margin:0;
+  padding:0;
+}
+li{
+  list-style: none;
+}
+#list{
+  width: 200px;
+  margin: 50px auto;
+  border:1px solid #000;
+  li{
+    h2{
+      height: 32px;
+      line-height: 32px;
+      font-size: 18px;
+      padding-left: 20px;
+      cursor: pointer;
+      background:url(../img/ico1.gif) no-repeat 5px center;
+    }
+    ul{
+      margin-left: 20px;
+      display: none;
+      li{
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+      }
+      li:hover{
+        background: #f60;
+      }
+    }
+  }
+}
