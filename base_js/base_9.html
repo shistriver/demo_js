@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于行内块中间有空白缝隙的问题</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            /*word-spacing: -8px;*/   /*方法2*/
+            font-size: 0;   /*方法3*/
+        }
+        span{
+            width:50px;
+            height:20px;
+            display: inline-block;
+            background: #f60;
+            /*float:left;*/   /*方法4*/
+            /*margin-left:-8px;*/  /*方法1*/
+            font-size: 16px;   /*方法3*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>文字</span>
+        <span>文字</span>
+        <span>文字</span>
+        <span>文字</span>
+    </div>
+</body>
+</html>

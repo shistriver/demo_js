@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            position: absolute;
+            left:30px;
+            top:50px;
+            background: #f60;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementsByTagName('input');
+            var oBox = document.getElementById('box');
+
+            btn[1].onclick = function(){
+                doMove(oBox,'top',12,500,fn2);
+            };
+
+            btn[0].onclick = function(){
+                doMove(oBox,'top',12,10,fn);
+            };
+
+            function fn(){
+                alert(1)
+            }
+            function fn2(){
+                alert(2)
+            }
+
+            function doMove(obj,attr,dir,target,endFn){
+                clearInterval(obj.timer);
+                dir = target >parseInt(getStyle(obj, attr)) ? dir : -dir;
+                obj.timer = setInterval(function(){
+                    var speed = parseInt(getStyle(obj, attr)) + dir;
+                    if(speed > target && dir > 0 || speed < target && dir < 0){
+                        speed = target;
+                    }
+                    obj.style[attr] = speed + 'px';
+                    if(speed === target){
+                        clearInterval(obj.timer);
+                        endFn && endFn();
+                    }
+                },30);
+            };
+        };
+
+        function getStyle(obj,attr){
+            return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+        }
+    </script>
+</head>
+<body>
+<!--<input type="button" value="往后"/>
+<input type="button" value="往前"/>-->
+<input type="button" value="往上"/>
+<input type="button" value="往下"/>
+<div id="box"></div>
+</body>
+</html>

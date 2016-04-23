@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #nav{
+            width: 287px;
+            height:42px;
+            margin: 0 auto;
+        }
+        #nav a{
+            width: 68px;
+            height: 42px;
+            text-align: center;
+            line-height: 42px;
+            float: left;
+            text-decoration: none;
+            background: bisque;
+            border-radius: 20px;
+            color: #000;
+        }
+        #nav a:not(:last-child){
+            margin-right: 5px;
+        }
+        #centent{
+            width: 287px;
+            height: 60px;
+            margin: 0 auto;
+            margin-top: 10px;
+            /*display: none;*/
+        }
+        .nav-list{
+            display: none;
+        }
+        .nav-list a{
+            float: left;
+            width: 56px;
+            height: 28px;
+            background: #f60;
+            color: #fff;
+            text-decoration: none;
+            line-height: 28px;
+            text-align: center;
+        }
+        .nav-list a:hover{
+            color:#000;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var nav = document.getElementById('nav');
+            var centent = document.getElementById('centent');
+            var oA = nav.getElementsByTagName('a');
+            var list = centent.getElementsByTagName('div');
+            var timer = null;
+
+            for(var i=0; i<oA.length; i++){
+                oA[i].index = i;
+                oA[i].onmouseover = function(){
+                    show(this.index);
+                }
+                oA[i].onmouseout = function(){
+                    hide(this.index);
+                }
+            }
+
+            for(var i=0; i<list.length; i++){
+                list[i].index = i;
+                list[i].onmouseover = function(){
+                    show(this.index);
+                }
+                list[i].onmouseout = function(){
+                    hide(this.index);
+                }
+            }
+
+            function show(num){
+                clearTimeout(timer);
+                list[num].style.display = 'block';
+            }
+
+            function hide(num){
+//                list[num].style.display = 'none';
+                timer = setTimeout(function(){
+                    list[num].style.display = 'none';
+                },200);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="nav">
+        <a href="">首页</a>
+        <a href="">详情</a>
+        <a href="">产品</a>
+        <a href="">列表</a>
+    </div>
+    <div id="centent">
+        <div class="nav-list">
+            <a href="">内容1</a>
+            <a href="">内容2</a>
+            <a href="">内容3</a>
+        </div>
+        <div class="nav-list">
+            <a href="">详情1</a>
+            <a href="">详情2</a>
+            <a href="">详情3</a>
+        </div>
+        <div class="nav-list">
+            <a href="">产品1</a>
+            <a href="">产品2</a>
+            <a href="">产品3</a>
+        </div>
+        <div class="nav-list">
+            <a href="">列表1</a>
+            <a href="">列表2</a>
+        </div>
+    </div>
+</body>
+</html>

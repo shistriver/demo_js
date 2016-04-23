@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            position:absolute;
+            left:200px;
+            top:100px;
+            background: #f60;
+        }
+    </style>
+    <script src="js/move.js"></script>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById('box');
+
+            oDiv.onclick = shakeFn;
+
+            function shakeFn(){
+                _this = this;
+                shake(_this,'left',function(){
+                    shake(_this,'top');
+                });
+            }
+
+            function shake(obj,attr,endFn){
+                var pos = parseInt(getStyle(obj,attr));
+                var arr = [];
+                var num = 0;
+                for(var i=20; i>0; i=i-2){
+                    arr.push(i,-i);
+                }
+                arr.push(0);
+
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function(){
+                    oDiv.style[attr] = pos + arr[num] + 'px';
+                    num++;
+                    if(num === arr.length){
+                        clearInterval(obj.timer);
+                        endFn && endFn();
+                    }
+                },30);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

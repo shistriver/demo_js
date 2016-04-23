@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            height:50px;
+            line-height: 50px;
+
+        }
+        li p{
+            display: inline-block;
+        }
+        li input{
+            width: 28px;
+            height: 28px;
+        }
+        .sum{
+            margin-top:10px;
+        }
+        .sum b, .sum i{
+            margin:0 5px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oUl = document.getElementById('list');
+            var aLi = oUl.getElementsByTagName('li');
+            var oSum = document.getElementById('sum');
+            var oB_Sum = oSum.getElementsByTagName('b')[0];
+            var oI_Sum = oSum.getElementsByTagName('i')[0];
+
+//            var piece = 0;
+            for(var i=0; i<aLi.length; i++){
+                sum(aLi[i]);
+//                console.log(aLi[i].piece);
+            }
+            var oSpan = aLi[0].getElementsByTagName('span');
+            console.log(oSpan[0]);
+//            oB_Sum.innerHTML = oSpan.innerHTML;
+
+           /* for(var i=0; i<aLi.length; i++){
+                var oSpan = aLi[0].getElementsByTagName('span')[0];
+                oB_Sum.innerHTML = oSpan.innerHTML;
+            }*/
+
+            //件
+            /*function sumPiece(aLi){
+                console.log(134)
+                var oSum = document.getElementById('sum');
+                var oB_Sum = oSum.getElementsByTagName('b');
+                var oI_Sum = oSum.getElementsByTagName('i');
+                var oSpan = aLi.getElementsByTagName('span')[0];
+                oValue += Number(oSpan.innerHTML);
+                oB_Sum.innerHTML = oValue;
+                console.log(36345634)
+            }*/
+
+
+            function sum(aLi){
+                var oInput = aLi.getElementsByTagName('input');
+//                var oSpan = aLi.getElementsByTagName('span')[0];
+                var oB = aLi.getElementsByTagName('b')[0];
+                var oI = aLi.getElementsByTagName('i')[0];
+                var oValue = Number(oInput[1].value);
+                var bValue = Number(oB.innerHTML);
+
+                oInput[2].onclick = function(){
+                    oValue++;
+                    oInput[1].value = oValue;
+                    oI.innerHTML = (oValue * bValue).toFixed(2);
+                };
+                oInput[0].onclick = function(){
+                    oValue--;
+                    if(oValue < 0){
+                        oValue = 0;
+                    }
+                    oSpan.innerHTML = oValue;
+                    oI.innerHTML = (oValue * bValue).toFixed(2);
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li id="li01">
+            <input type="button" value="-"/>
+            <input type="text" value="0"/>
+            <!--<span>0</span>-->
+            <input type="button" value="+"/>
+            <p>单价：<b>13.5</b>元 <i>0</i>元</p>
+        </li>
+        <li id="li02">
+            <input type="button" value="-"/>
+            <input type="text" value="0"/>
+            <!--<span>0</span>-->
+            <input type="button" value="+"/>
+            <p>单价：<b>8.5</b>元 <i>0</i>元</p>
+        </li>
+        <li id="li03">
+            <input type="button" value="-"/>
+            <input type="text" value="0"/>
+            <!--<span>0</span>-->
+            <input type="button" value="+"/>
+            <p>单价：<b>9.5</b>元 <i>0</i>元</p>
+        </li>
+        <li id="li04">
+            <input type="button" value="-"/>
+            <input type="text" value="0"/>
+            <!--<span>0</span>-->
+            <input type="button" value="+"/>
+            <p>单价：<b>14.8</b>元 <i>0</i> 元</p>
+        </li>
+    </ul>
+<div id="sum">
+    <p>共<b>0</b>件,总价为：<i>0</i>元</p>
+</div>
+</body>
+</html>

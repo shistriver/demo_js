@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+    <script src="js/move.js"></script>
+    <script>
+        window.onload = function(){
+            var str = '';
+            var len = 20;
+            var aDiv = document.getElementsByTagName('div');
+            var timer = null;
+            var num = 0;
+            var onOff = true;
+
+            for(var i=0; i<len; i++){
+                str += '<div style="width:50px;height:50px;background:#f60;position:absolute;top:0;left:'+i*60+'px;"></div>'
+            }
+            document.body.innerHTML = str;
+
+            document.onclick = function(){
+                clearInterval(timer);
+                /*timer = setInterval(function(){
+                    doMove(aDiv[num],'top',12,500);
+                    num++;
+                    if(num === len){
+                        clearInterval(timer);
+                    }
+
+                },100);*/
+
+
+                if(onOff){
+                    timer = setInterval(function(){
+                        doMove(aDiv[num],'top',12,500);
+                        num++;
+                        if(num === len){
+                            clearInterval(timer);
+                            num = 0;
+                            onOff = false;
+                        }
+
+                    },100);
+                }else{
+                    timer = setInterval(function(){
+                        doMove(aDiv[num],'top',12,0);
+                        num++;
+                        if(num === len){
+                            clearInterval(timer);
+                            num = 0;
+                            onOff = true;
+                        }
+
+                    },100);
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>（QQ）鼠标移入移出效果</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .sider{
+            width:100px;
+            height:200px;
+            background: #f60;
+
+        }
+        .bar{
+            position:absolute;
+            top:0;
+            left:106px;
+            width:100px;
+            height:80px;
+            background: #f60;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var sider = document.getElementById('div1');
+            var bar = document.getElementById('div2');
+            var timer = null;
+
+            sider.onmouseover = show;
+            sider.onmouseout = hide;
+
+            bar.onmouseover = show;
+            bar.onmouseout = hide;
+
+            function show(){
+                clearInterval(timer);
+                timer = setTimeout(function(){
+                    bar.style.display = 'block';
+                }, 200);
+            }
+            function hide(){
+                timer = setTimeout(function(){
+                    bar.style.display = 'none';
+                }, 200);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="sider" id="div1"></div>
+    <div class="bar" id="div2"></div>
+</body>
+</html>
