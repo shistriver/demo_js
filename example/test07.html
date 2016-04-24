@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 自定义属性</title>
+    <script>
+        window.onload = function(){
+            var oDiv = document.querySelector('#div1');
+            alert(oDiv.dataset.shi);
+            alert(oDiv.dataset.shiAll);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="div1" data-shi="miss shi" data-shi-all="hello world"></div>
+</body>
+</html>

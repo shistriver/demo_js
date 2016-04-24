@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5 添加新的选择器</title>
+    <style>
+        .box5{
+            background: #f60;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oDiv = document.querySelector('#div1');
+//            var oDiv = document.querySelectorAll('.box');
+//            var oDiv = document.getElementsByClassName('box');
+//            alert(oDiv.length)
+//            alert(oDiv.classList)
+//            alert(typeof oDiv.classList)
+            /*oDiv.classList.add('box4');
+            oDiv.classList.remove('box4');
+            oDiv.classList.toggle('box5');
+            alert(oDiv.classList);*/
+            oDiv.onclick = function(){
+                oDiv.classList.toggle('box5');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1" class="box box1 box2">选择器</div>
+    <div class="box">box</div>
+</body>
+</html>

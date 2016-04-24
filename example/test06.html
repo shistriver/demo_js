@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5 json 的新方法</title>
+    <script>
+        window.onload = function(){
+            //把 字符串转换成json
+            /*var a = 'function test(){alert(123);}';
+             eval(a); //可以解析任何字符串变成js
+             test();*/
+
+            /*var a = 'function test(){alert(123);}';
+            JSON.parse(a); //只能把json形式的 解析成js
+            test();*/
+
+            /*var str = '{"name":"shi"}';
+            var json = JSON.parse(str); //字符串中的属性要严格的加上引号
+            console.log(json.name);*/
+
+            //把json 转换成字符串
+            /*var a = {
+                name:'hello'
+            };
+            var json = JSON.stringify(a);
+            alert(json);*/
+
+//            对象的引用
+
+            /*var a = {
+                name:'hello'
+            };
+
+            var b = a;
+            b.name = 'world';
+            alert(a.name);*/
+
+            //方法1
+            /*var a = {
+                name:'hello'
+            };
+
+            var b = {};
+            for(var attr in a){
+                b[attr] = a[attr];
+            }
+            b.name = 'world';
+            alert(a.name);*/
+
+            //方法2：
+            /*var a = {
+             name:'hello'
+             };
+
+             var str = JSON.stringify(a);
+             var b = JSON.parse(str);
+             b.name = 'shi';
+
+             alert(a.name);*/
+
+            //深拷贝: 详细搜索：对象的引用
+            var a = {
+                name:{age:'25'}
+            };
+
+            var str = JSON.stringify(a);
+            var b = JSON.parse(str);
+            b.name.age = '26';
+
+            alert(a.name.age);
+
+            //兼容性：去http://www.json.org/ 下载 json2.js.
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

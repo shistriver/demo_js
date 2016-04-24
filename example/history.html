@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 历史管理</title>
+    <script>
+        window.onload = function(){
+            var oInput = document.querySelector('input');
+            var oDiv = document.getElementById('box');
+
+            //映射关系
+            var json = {};
+
+            oInput.onclick = function(){
+                var num = Math.random();
+                var str = randomFn(35,7);
+                json[num] = str;
+
+                oDiv.innerHTML = str;
+                window.location.hash = num;
+            };
+
+            window.onhashchange = function(){
+//                console.log(window.location.hash.substring(1));
+                oDiv.innerHTML = json[window.location.hash.substring(1)];
+            };
+
+
+            function randomFn(iAll,iNow){
+                var arr = [];
+                var result = [];
+
+                for(var i=0; i<=iAll; i++){
+                    arr.push(i);
+                }
+
+                for(var i=0; i<iNow; i++){
+//                    arr.splice(Math.floor(Math.random() * len),1);
+                    result.push(arr.splice(Math.floor(Math.random() * arr.length),1));
+                }
+                return result;
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="随机选择"/>
+<br/>
+<div id="box"></div>
+</body>
+</html>
