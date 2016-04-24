@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5 pushState 专做历史管理</title>
+    <script>
+        window.onload = function(){
+            var oInput = document.querySelector('input');
+            var oDiv = document.getElementById('box');
+
+
+            oInput.onclick = function(){
+                var str = randomFn(35,7);
+                oDiv.innerHTML = str;
+                history.pushState(str,'',str);
+            };
+
+            window.onpopstate = function(ev){
+                oDiv.innerHTML = ev.state;
+            };
+
+            function randomFn(iAll,iNow){
+                var arr = [];
+                var result = [];
+
+                for(var i=0; i<=iAll; i++){
+                    arr.push(i);
+                }
+
+                for(var i=0; i<iNow; i++){
+//                    arr.splice(Math.floor(Math.random() * len),1);
+                    result.push(arr.splice(Math.floor(Math.random() * arr.length),1));
+                }
+                return result;
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="随机选择"/>
+<br/>
+<div id="box"></div>
+</body>
+</html>
